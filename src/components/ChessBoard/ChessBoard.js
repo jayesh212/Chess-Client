@@ -83,7 +83,7 @@ const ChessBoard = ({ player, gameCode ,onGameOver}) => {
   else selfPieces = BlackPieces;
   const getNextMove = (gameCode, player) => {
     var dataString = `gameCode=${gameCode}&player=${player}`;
-    fetch("/getNextMove", {
+    fetch("https://jayschessserver.herokuapp.com/getNextMove", {
       method: "POST",
       headers: {
         "content-Type": "application/x-www-form-urlencoded",
@@ -119,7 +119,7 @@ const ChessBoard = ({ player, gameCode ,onGameOver}) => {
   const [waitingForMove, setWaitingStatus] = useState(false);
   const onGameLeave = () => {
     //leave the game and move to home
-    fetch("/endGame", {
+    fetch("https://jayschessserver.herokuapp.com/endGame", {
       method: "POST",
       headers: {
         "content-Type": "application/x-www-form-urlencoded",
@@ -161,7 +161,7 @@ const ChessBoard = ({ player, gameCode ,onGameOver}) => {
   };
   const sendMoveToServer = (toI, toJ, fromI, fromJ) => {
     var dataString = `gameCode=${gameCode}&player=${player}&toI=${toI}&toJ=${toJ}&fromI=${fromI}&fromJ=${fromJ}`;
-      fetch("/movePiece", {
+      fetch("https://jayschessserver.herokuapp.com/movePiece", {
         method: "POST",
         headers: {
           "content-Type": "application/x-www-form-urlencoded",
@@ -176,7 +176,7 @@ const ChessBoard = ({ player, gameCode ,onGameOver}) => {
             console.log(responseJSON.error);
           } else if (responseJSON.status === "Ok") {
             clearInterval(timer);
-            timer = setInterval(getNextMove, 4000,gameCode,player);
+            timer = setInterval(getNextMove, 4000, gameCode, player);
             waitForNextMove = true;
             setWaitingStatus(true);
           }

@@ -17,47 +17,52 @@ const Home = ({ gameJoined, gameCreated }) => {
             setGameJoinError('Game Code Must have 6 digits');
             return;
         }
-        fetch("/joinGame", {
-            "method": "POST",
-            "headers": {
-                "content-Type":"application/x-www-form-urlencoded"
-            },
-            "body": `gameCode=${gameCode}`,
-        }).then((response) => { return response.json() }).then((responseJSON) => {
-            if (responseJSON.error)
-            {
-                //Show Some Error
-                setGameJoinError(responseJSON.error);
-            }
-            else {
-                gameJoined(gameCode);
-            }
-        }).catch((error) => {
-            setGlobalError('Server is Temporarily Down');
+        fetch("https://jayschessserver.herokuapp.com/joinGame", {
+          method: "POST",
+          headers: {
+            "content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `gameCode=${gameCode}`,
         })
+          .then((response) => {
+            return response.json();
+          })
+          .then((responseJSON) => {
+            if (responseJSON.error) {
+              //Show Some Error
+              setGameJoinError(responseJSON.error);
+            } else {
+              gameJoined(gameCode);
+            }
+          })
+          .catch((error) => {
+            setGlobalError("Server is Temporarily Down");
+          });
     }
     const createGameHandler = () => {
         if (globalError.length !== 0) setGlobalError("");
-        fetch("/createGame", {
-            "method": "POST",
-            "headers": {
-                "content-Type":"application/x-www-form-urlencoded"
-            },
-            "body":""
-        }).then((response) => { return response.json() }).then((responseJSON) => {
-            if (responseJSON.error)
-            {
-                //Show The Error
-                setGlobalError(responseJSON.error);
-            }
-            else
-            {
-                //Move to Waiting Area
-                gameCreated('' +responseJSON.gameCode);
-            }
-        }).catch((error) => {
-            setGlobalError('Server is Temporarily Down');
+        fetch("https://jayschessserver.herokuapp.com/createGame", {
+          method: "POST",
+          headers: {
+            "content-Type": "application/x-www-form-urlencoded",
+          },
+          body: "",
         })
+          .then((response) => {
+            return response.json();
+          })
+          .then((responseJSON) => {
+            if (responseJSON.error) {
+              //Show The Error
+              setGlobalError(responseJSON.error);
+            } else {
+              //Move to Waiting Area
+              gameCreated("" + responseJSON.gameCode);
+            }
+          })
+          .catch((error) => {
+            setGlobalError("Server is Temporarily Down");
+          });
     }
     const onCodeChange = (ev) => {
         if (globalError.length !== 0) setGlobalError("");
