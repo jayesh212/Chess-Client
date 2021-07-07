@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from "react";
+import Home from "./components/HomePage/Home";
+import WaitingArea from "./components/WaitingArea/WaitingArea";
+import Game from "./Game";
+const App = () => {
+  const [page, setPage] = useState('Home');
+  const [player, setPlayer] = useState('WHITE');
+  const [gameCode, setGameCode] = useState('');
+  const gameCreated = (gameCode) => {
+    setPlayer('WHITE');
+    setPage('Waiting');
+    setGameCode(gameCode);
+  }
+  const gameJoined = (gameCode) => {
+    setPlayer('BLACK');
+    setPage('Game');
+    setGameCode(gameCode);
+  }
+  const gameStarted = () => {
+    setPage('Game');
+  }
+  const onGameOver = () => {
+    setPage('Home');
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {page === "Home" && <Home gameCreated={gameCreated} gameJoined={gameJoined} />}
+      {page === "Waiting" && <WaitingArea onGameStart={gameStarted} onGameOver={onGameOver} gameCode={gameCode}/>}
+      {page === "Game" && <Game player={player} gameCode={gameCode} onGameOver={onGameOver}/>}
     </div>
   );
-}
-
+};
 export default App;

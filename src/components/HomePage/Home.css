@@ -1,0 +1,62 @@
+.gameMenu{
+    display: flex;
+    flex-direction: column;
+}
+.gameMenu input{
+    display: flex;
+    border: none;
+    background-color: papayawhip;
+    color: black;
+    font-size: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: none;
+    border-radius: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.joinGame{
+    display: flex;
+    flex-direction: column;
+}
+.joinGame button{
+    display:block;
+    color: black;
+    background-color:pink;
+    align-self: flex-end;
+    font-size: 24px;
+    margin-top: 8px;
+    cursor: pointer;
+    user-select: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    border:none;
+    border-radius: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s;
+}
+.joinGame button:hover{
+    background-color:palevioletred;
+}
+.menuButton{
+    display:block;
+    color: black;
+    background-color: pink;
+    font-size: 24px;
+    margin: 48px;
+    user-select: none;
+    border-radius: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    cursor: pointer;
+    border:none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s;
+}
+.menuButton:hover{
+    background-color: palevioletred;
+}
+.error{
+    font-size: 18px;
+    color: red;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

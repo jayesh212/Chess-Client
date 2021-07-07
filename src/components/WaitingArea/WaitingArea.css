@@ -1,0 +1,44 @@
+.text{
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    user-select: none;
+}
+.goldenText{
+    font-size: 32px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #00FFFF;
+    user-select: text;
+    cursor: copy;
+}
+.waitingArea{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    margin: auto auto;
+    align-items: center;
+    user-select: none;
+}
+.menuButton{
+    display:block;
+    color: black;
+    background-color: pink;
+    font-size: 24px;
+    margin: 48px;
+    user-select: none;
+    border-radius: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    cursor: pointer;
+    border:none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s;
+}
+.menuButton:hover{
+    background-color: palevioletred;
+}
+.waitingArea img{
+    height: 200px;
+    width: 200px;
+}
